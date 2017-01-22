@@ -41,18 +41,25 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
             var responseText = "";
-            switch(event.message.text.toLowerCase()) {
-              case "hello":
-                  responseText = "tyl"
-                  break;
-              case "time":
-                  var d = new Date();
-                  responseText = d.toString();
-                  break;
-              default:
-                  var randomNumber = Math.floor((Math.random() * 10));
-                  responseText = randomResponses[randomNumber] + randomNumber
+            var userText = event.message.text.toLowerCase();
+            if (userText.contains("hello")) {
+              responseText = "tyl";
+            } else if (userText.contains("time")) {
+              var d = new Date();
+              responseText = d.toString();
+            } else if (userText.contains("date")) {
+              var d = new Date();
+              responseText = d.toString();
+            } else if (userText.contains("weather")) {
+              sendMessage(event.sender.id, {text: "2 sec dude"});
+              responseText = "fuck off";
+            } else if (userText.contains("suce")) {
+              responseText = "oui je suce toi?";
+            } else {
+              var randomNumber = Math.floor((Math.random() * 10));
+              responseText = randomResponses[randomNumber]
             }
+
             sendMessage(event.sender.id, {text: responseText});
         }
     }
