@@ -57,7 +57,7 @@ app.post('/webhook', function (req, res) {
               responseText = "oui je suce toi?";
             } else {
               var randomNumber = Math.floor((Math.random() * 10));
-              responseText = randomResponses[randomNumber]
+              responseText = randomResponses[randomNumber];
             }
 
             sendMessage(event.sender.id, {text: responseText});
