@@ -21,7 +21,6 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-var randomNumber = Math.floor((Math.random() * 10));
 var randomResponses = [
     "okok",
     "tyl",
@@ -51,7 +50,8 @@ app.post('/webhook', function (req, res) {
                   responseText = d.toString();
                   break;
               default:
-                  responseText = randomResponses[randomNumber]
+                  var randomNumber = Math.floor((Math.random() * 10));
+                  responseText = randomResponses[randomNumber] + randomNumber
             }
             sendMessage(event.sender.id, {text: responseText});
         }
