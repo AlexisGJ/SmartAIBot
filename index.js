@@ -36,8 +36,6 @@ var randomResponses = [
 var daysOfWeek = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 var months = ["janvier","février","mars","avril","may","juin","juillet","août","septembre","octobre","novembre","décembre"];
 
-var historyString = " history: ";
-
 // handler receiving messages
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
@@ -66,8 +64,7 @@ app.post('/webhook', function (req, res) {
               responseText = randomResponses[randomNumber];
             }
 
-            historyString += responseText;
-            sendMessage(event.sender.id, {text: responseText + historyString});
+            sendMessage(event.sender.id, {text: responseText});
         }
     }
     res.sendStatus(200);
