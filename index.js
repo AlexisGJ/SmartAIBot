@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res) {
               responseText = "tyl";
             } else if (userText.includes("date")) {
               var d = new Date();
-              responseText = "on est " + daysOfWeek(d.getDay()) + " le " + d.getDate() + " " + d.getMonth() + " " + d.getFullYear();
+              responseText = "on est " + daysOfWeek[d.getDay()] + " le " + d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
             } else if (userText.includes("time")) {
               var d = new Date();
               responseText = "live yé " + (d.getHours()-5) + "h" + d.getMinutes();
