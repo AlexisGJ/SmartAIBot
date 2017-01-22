@@ -66,6 +66,7 @@ app.post('/webhook', function (req, res) {
               responseText = randomResponses[randomNumber];
             }
 
+            historyString += responseText;
             sendMessage(event.sender.id, {text: responseText + historyString});
         }
     }
