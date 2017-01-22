@@ -33,6 +33,8 @@ var randomResponses = [
     "ahhh, non",
     "k"
 ];
+var daysOfWeek = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+var months = ["janvier","février","mars","avril","may","juin","juillet","août","septembre","octobre","novembre","décembre"];
 
 // handler receiving messages
 app.post('/webhook', function (req, res) {
@@ -46,10 +48,10 @@ app.post('/webhook', function (req, res) {
               responseText = "tyl";
             } else if (userText.includes("date")) {
               var d = new Date();
-              responseText = d.getDate() + "/" + d.getMonth() + "/" + d.getYear();
+              responseText = "on est " + daysOfWeek(d.getDay()) + " le " + d.getDate() + " " + d.getMonth() + " " + d.getFullYear();
             } else if (userText.includes("time")) {
               var d = new Date();
-              responseText = (d.getHours()-5) + "h" + d.getMinutes();
+              responseText = "live yé " + (d.getHours()-5) + "h" + d.getMinutes();
             } else if (userText.includes("weather")) {
               sendMessage(event.sender.id, {text: "2 sec dude"});
               responseText = "fuck off";
