@@ -65,6 +65,7 @@ app.post('/webhook', function (req, res) {
             }
 
             sendMessage(event.sender.id, {text: responseText});
+            setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
         }
     }
     res.sendStatus(200);
