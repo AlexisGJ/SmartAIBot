@@ -31,6 +31,18 @@ app.get('/webhook', function (req, res) {
 //     });
 // };
 
+var request = require("request");
+
+request({
+  uri: "http://www.wetrackmusic.com/getPlaylist.php",
+  method: "POST",
+  form: {
+    name: "tremblant"
+  }
+}, function(error, response, body) {
+  console.log(body);
+});
+
 var randomResponses = [
     "okok",
     "tyl",
