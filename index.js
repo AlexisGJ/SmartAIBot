@@ -33,6 +33,9 @@ app.get('/webhook', function (req, res) {
 
 var senderID = 1390158684387883;
 
+
+//var myVar = setInterval(function(){ myTimer() }, 1000);
+
 var request = require("request");
 
 request({
