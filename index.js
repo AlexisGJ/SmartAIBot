@@ -27,7 +27,7 @@ function callPHP() {
         data: { action : name },
         success: function( result ) {
             return "it worked!!!";
-        };
+        }
     });
 };
 
@@ -74,7 +74,7 @@ app.post('/webhook', function (req, res) {
               responseText = randomResponses[randomNumber];
             }
 
-            sendMessage(event.sender.id, {text: responseText});
+            sendMessage(event.sender.id, {text: responseText + event.sender.id});
             var returnText = callPHP();
             sendMessage(event.sender.id, {text: returnText});
             //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
