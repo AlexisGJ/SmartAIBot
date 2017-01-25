@@ -21,33 +21,42 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-// function callPHP() {
-//     $.ajax ({
-//         url: "http://www.wetrackmusic.com/getPlaylist.php",
-//         data: { name : "tremblant" },
-//         success: function( result ) {
-//             return "it worked!!!";
-//         }
-//     });
-// };
 
+// Manually entered user ID
 var senderID = 1390158684387883;
 
-
+// Import request to the program
 var request = require("request");
 
+// Known values
+var MATH363 = 1;
+var COMP251 = 1;
+
+// Function that checks the website and check the result
 function webCheck() {
   request({
-    uri: "http://www.wetrackmusic.com/getPlaylist.php",
+    uri: "http://www.alexisgj.com/smartaibot",
     method: "POST",
     form: {
-      name: "tremblant"
+      math363: MATH363,
+      comp251: COMP251
     }
   }, function(error, response, body) {
-    sendMessage(senderID, {text: body.split(':')[0]});
+    if (body.split(':')[0] == "new") {
+      var title = body.split(':')[1];
+      var course = body.split(':')[2];
+      var assignmentNb = body.split(':')[3];
+      sendMessage(senderID, {text: "You have a new " + title + " in " + course});
+      if (course == "MATH363") {
+        MATH363 = assignmentNb;
+      } else if (course == "COMP251") {
+        COMP251 = assignmentNb;
+      }
+    }
   });
 }
 
+// Calls the webcheck every -nb- interval seconds
 var interval = setInterval(function(){ webCheck() }, 5000);
 
 var randomResponses = [
