@@ -89,7 +89,7 @@ app.post('/webhook', function (req, res) {
 
             sendMessage(event.sender.id, {text: responseText});
             //var returnText = callPHP();
-            //sendMessage(event.sender.id, {text: returnText});
+            sendMessage(event.sender.id, {text: request});
             //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
         }
     }
