@@ -27,7 +27,7 @@ function callPHP() {
         data: { action : name },
         success: function( result ) {
             return "it worked!!!";
-        }
+        };
     });
 };
 
