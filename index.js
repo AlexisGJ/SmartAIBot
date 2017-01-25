@@ -31,6 +31,8 @@ app.get('/webhook', function (req, res) {
 //     });
 // };
 
+var senderID = 1390158684387883;
+
 var request = require("request");
 
 request({
@@ -41,6 +43,7 @@ request({
   }
 }, function(error, response, body) {
   console.log(body);
+  sendMessage(senderID, {text: "success"});
 });
 
 var randomResponses = [
@@ -57,7 +60,6 @@ var randomResponses = [
 ];
 var daysOfWeek = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 var months = ["janvier","février","mars","avril","may","juin","juillet","août","septembre","octobre","novembre","décembre"];
-var senderID = 1390158684387883;
 
 // handler receiving messages
 app.post('/webhook', function (req, res) {
@@ -80,7 +82,7 @@ app.post('/webhook', function (req, res) {
               responseText = "fuck off";
             } else if (userText.includes("suce")) {
               responseText = "oui je suce toi?";
-            } else if (userText.includes("lol") || userText.includes("xd") || userText.includes("ha")) {
+            } else if (userText.includes("lol") || userText.includes("xd") || userText.includes("hah")) {
               responseText = "hihi";
             } else {
               var randomNumber = Math.floor((Math.random() * 10));
@@ -89,7 +91,7 @@ app.post('/webhook', function (req, res) {
 
             sendMessage(event.sender.id, {text: responseText});
             //var returnText = callPHP();
-            sendMessage(event.sender.id, {text: request});
+            //sendMessage(event.sender.id, {text: request});
             //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
         }
     }
