@@ -21,7 +21,15 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-
+function callPHP() {
+    $.ajax ({
+        url: "http://www.wetrackmusic.com/getPlaylist.php",
+        data: { action : name },
+        success: function( result ) {
+            return "it worked!!!";
+        }
+    });
+};
 
 var randomResponses = [
     "okok",
@@ -67,7 +75,9 @@ app.post('/webhook', function (req, res) {
             }
 
             sendMessage(event.sender.id, {text: responseText});
-            setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
+            var returnText = callPHP();
+            sendMessage(event.sender.id, {text: returnText});
+            //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
         }
     }
     res.sendStatus(200);
