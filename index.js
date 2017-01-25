@@ -35,7 +35,7 @@ var COMP251 = 1;
 // Function that checks the website and check the result
 function webCheck() {
   request({
-    uri: "http://www.alexisgj.com/smartaibot",
+    uri: "http://www.alexisgj.com/smartaibot/index.php",
     method: "POST",
     form: {
       math363: MATH363,
