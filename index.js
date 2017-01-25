@@ -34,19 +34,21 @@ app.get('/webhook', function (req, res) {
 var senderID = 1390158684387883;
 
 
-//var myVar = setInterval(function(){ myTimer() }, 1000);
+var request = require("request");
 
-//var request = require("request");
+function webCheck() {
+  request({
+    uri: "http://www.wetrackmusic.com/getPlaylist.php",
+    method: "POST",
+    form: {
+      name: "tremblant"
+    }
+  }, function(error, response, body) {
+    sendMessage(senderID, {text: body.split(':')[0]});
+  });
+}
 
-request({
-  uri: "http://www.wetrackmusic.com/getPlaylist.php",
-  method: "POST",
-  form: {
-    name: "tremblant"
-  }
-}, function(error, response, body) {
-  sendMessage(senderID, {text: body.split(':')[0]});
-});
+var interval = setInterval(function(){ webCheck() }, 5000);
 
 var randomResponses = [
     "okok",
