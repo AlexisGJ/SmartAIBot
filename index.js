@@ -24,7 +24,7 @@ app.get('/webhook', function (req, res) {
 function callPHP() {
     $.ajax ({
         url: "http://www.wetrackmusic.com/getPlaylist.php",
-        data: { action : name },
+        data: { name : "tremblant" },
         success: function( result ) {
             return "it worked!!!";
         }
@@ -45,6 +45,7 @@ var randomResponses = [
 ];
 var daysOfWeek = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
 var months = ["janvier","février","mars","avril","may","juin","juillet","août","septembre","octobre","novembre","décembre"];
+var senderID = 1390158684387883;
 
 // handler receiving messages
 app.post('/webhook', function (req, res) {
@@ -74,7 +75,7 @@ app.post('/webhook', function (req, res) {
               responseText = randomResponses[randomNumber];
             }
 
-            sendMessage(event.sender.id, {text: responseText + event.sender.id});
+            sendMessage(event.sender.id, {text: responseText});
             var returnText = callPHP();
             sendMessage(event.sender.id, {text: returnText});
             //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
