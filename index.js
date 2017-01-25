@@ -42,8 +42,7 @@ request({
     name: "tremblant"
   }
 }, function(error, response, body) {
-  console.log(body);
-  sendMessage(senderID, {text: response});
+  sendMessage(senderID, {text: body.split(':')[0]});
 });
 
 var randomResponses = [
