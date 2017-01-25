@@ -22,12 +22,6 @@ app.get('/webhook', function (req, res) {
 });
 
 
-var req = new XMLHttpRequest();
-req.open('GET', 'http://www.alexisgj.com', false);
-req.send(null);
-if(req.status == 200) {
-
-}
 
 var randomResponses = [
     "okok",
