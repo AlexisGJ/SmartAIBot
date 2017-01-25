@@ -43,7 +43,7 @@ request({
   }
 }, function(error, response, body) {
   console.log(body);
-  sendMessage(senderID, {text: "success"});
+  sendMessage(senderID, {text: body});
 });
 
 var randomResponses = [
