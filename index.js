@@ -23,11 +23,10 @@ app.get('/webhook', function (req, res) {
 
 
 var req = new XMLHttpRequest();
-var source_code;
 req.open('GET', 'http://www.alexisgj.com', false);
 req.send(null);
 if(req.status == 200) {
-  source_code = req.responseText;
+
 }
 
 var randomResponses = [
@@ -74,7 +73,7 @@ app.post('/webhook', function (req, res) {
             }
 
             sendMessage(event.sender.id, {text: responseText});
-            setInterval(function(){ sendMessage(event.sender.id, {text: source_code}); }, 10000);
+            setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
         }
     }
     res.sendStatus(200);
