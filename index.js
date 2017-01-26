@@ -23,7 +23,7 @@ app.get('/webhook', function (req, res) {
 
 
 // Manually entered user ID
-var senderID = 1390158684387883;
+var senderID = ["1390158684387883","1311814338882948"];
 
 // Import request to the program
 var request = require("request");
@@ -47,7 +47,12 @@ function webCheck() {
       var title = body.split(':')[1];
       var course = body.split(':')[2];
       var assignmentNb = body.split(':')[3];
-      sendMessage(senderID, {text: "You have a new " + title + " in " + course});
+
+      // Send the messages
+      for (int i=0; i<senderID.length; i++) {
+        sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
+      }
+
       if (course == "MATH363") {
         MATH363 = assignmentNb;
       } else if (course == "COMP251") {
