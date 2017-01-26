@@ -57,6 +57,12 @@ function webCheck() {
   });
 }
 
+// Keep the server awake forever
+var http = require("http");
+setInterval(function() {
+    http.get("http://secure-shelf-91858.herokuapp.com/");
+}, 300000); // every 5 minutes
+
 // Calls the webcheck every -nb- interval seconds
 var interval = setInterval(function(){ webCheck() }, 120000);
 
