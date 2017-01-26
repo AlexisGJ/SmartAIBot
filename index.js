@@ -42,6 +42,8 @@ function webCheck() {
       comp251: COMP251
     }
   }, function(error, response, body) {
+    console.log(body);
+    sendMessage(senderID, {text: "Hello dude"});
     if (body.split(':')[0] == "new") {
       var title = body.split(':')[1];
       var course = body.split(':')[2];
