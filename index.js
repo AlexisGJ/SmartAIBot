@@ -49,7 +49,7 @@ function webCheck() {
       var assignmentNb = body.split(':')[3];
 
       // Send the messages
-      for (int i=0; i<senderID.length; i++) {
+      for (var i=0; i<senderID.length; i++) {
         sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
       }
 
@@ -114,7 +114,7 @@ app.post('/webhook', function (req, res) {
               responseText = randomResponses[randomNumber];
             }
 
-            sendMessage(event.sender.id, {text: responseText + event.sender.id});
+            sendMessage(event.sender.id, {text: responseText});
             //var returnText = callPHP();
             //sendMessage(event.sender.id, {text: request});
             //setInterval(function(){ sendMessage(event.sender.id, {text: responseText}); }, 10000);
