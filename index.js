@@ -42,6 +42,7 @@ function webCheck() {
       comp251: COMP251
     }
   }, function(error, response, body) {
+    console.log(MATH363);
     if (body.split(':')[0] == "new") {
       var title = body.split(':')[1];
       var course = body.split(':')[2];
