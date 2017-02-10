@@ -53,6 +53,13 @@ function webCheck() {
         sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
       }
 
+      if (body.split(':').length >= 8) {
+        var title = body.split(':')[5];
+        var course = body.split(':')[6];
+        var assignmentNb = body.split(':')[7];
+      }
+
+
       if (course == "MATH363") {
         MATH363 = assignmentNb;
       } else if (course == "COMP251") {
@@ -69,7 +76,7 @@ setInterval(function() {
 }, 300000); // every 5 minutes
 
 // Calls the webcheck every -nb- interval seconds
-var interval = setInterval(function(){ webCheck() }, 300000);
+var interval = setInterval(function(){ webCheck() }, 3000);
 
 var randomResponses = [
     "okok",
