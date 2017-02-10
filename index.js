@@ -57,6 +57,11 @@ function webCheck() {
         var title = body.split(':')[5];
         var course = body.split(':')[6];
         var assignmentNb = body.split(':')[7];
+
+        for (var i=0; i<senderID.length; i++) {
+          sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
+        }
+
       }
 
 
