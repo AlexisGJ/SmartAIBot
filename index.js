@@ -81,7 +81,7 @@ setInterval(function() {
 }, 300000); // every 5 minutes
 
 // Calls the webcheck every -nb- interval seconds
-var interval = setInterval(function(){ webCheck() }, 3000);
+var interval = setInterval(function(){ webCheck() }, 300000);
 
 var randomResponses = [
     "okok",
