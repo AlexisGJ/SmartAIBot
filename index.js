@@ -29,8 +29,8 @@ var senderID = ["1390158684387883","1311814338882948"];
 var request = require("request");
 
 // Known values
-var MATH363 = 1;
-var COMP251 = 1;
+var valueMath363 = 1;
+var valueComp251 = 1;
 
 // Function that checks the website and check the result
 function webCheck() {
@@ -38,11 +38,12 @@ function webCheck() {
     uri: "http://www.alexisgj.com/smartaibot/index.php",
     method: "POST",
     form: {
-      math363: MATH363,
-      comp251: COMP251
+      math363: valueMath363,
+      comp251: valueComp251
     }
   }, function(error, response, body) {
-    console.log(MATH363);
+
+
     if (body.split(':')[0] == "new") {
       var title = body.split(':')[1];
       var course = body.split(':')[2];
@@ -53,23 +54,13 @@ function webCheck() {
         sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
       }
 
-      if (body.split(':').length >= 8) {
-        var title = body.split(':')[5];
-        var course = body.split(':')[6];
-        var assignmentNb = body.split(':')[7];
-
-        for (var i=0; i<senderID.length; i++) {
-          sendMessage(senderID[i], {text: "You have a new " + title + " in " + course});
-        }
-
-      }
-
 
       if (course == "MATH363") {
-        MATH363 = assignmentNb;
+        valueMath363 = assignmentNb;
       } else if (course == "COMP251") {
-        COMP251 = assignmentNb;
+        valueComp251 = assignmentNb;
       }
+
     }
   });
 }
